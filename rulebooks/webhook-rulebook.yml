@@ -1,0 +1,12 @@
+---
+- name: AIOps Webhook Demo
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        port: 5001
+  rules:
+    - name: Simulate httpd failure
+      condition: event.payload.issue == "httpd_down"
+      action:
+        run_job_template:
+          name: "01-EDA-Log Enrichment"
