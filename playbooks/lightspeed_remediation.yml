@@ -1,0 +1,7 @@
+---
+- name: Simulate Remediation for httpd down
+  hosts: localhost
+  tasks:
+    - name: Simulate httpd restart
+      ansible.builtin.debug:
+        msg: "httpd restarted successfully"
