@@ -1,0 +1,16 @@
+---
+- name: Simulate Log Enrichment and Prompt Generation
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Capture system status
+      ansible.builtin.shell: uptime
+      register: result
+
+    - name: Print system status
+      ansible.builtin.debug:
+        msg: "{{ result.stdout }}"
+
+    - name: Set Lightspeed prompt (simulate AI step)
+      ansible.builtin.set_fact:
+        lightspeed_prompt: "Restart httpd service and check status"
